@@ -1,0 +1,202 @@
+{% extends 'aplicacion/base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="w-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+<!-- Espacio para el texto izquierdo -->
+
+<!-- Imagen alineada a la derecha -->
+<div class="navbar-text">
+</div>
+</div>
+</nav>
+
+<a class="nav-link disabled adminboard text-dark ml-3 font-weight-bold" href="#">DASHBOARD REEMBOLSOS</a>
+
+<div class="container mt-2">
+<a class="btn btn-primary text-dark botoncito font-weight-bold" href="dashboardadmin.html" role="button">VENTAS</a>
+<a class="btn btn-primary text-dark botoncito font-weight-bold" href="dashboardreembolsos.html" role="button">REEMBOLSO</a>
+<a class="btn btn-primary text-dark botoncito font-weight-bold" href="#" role="button">COMPRAS</a>
+<a class="btn btn-primary text-dark botoncito font-weight-bold" href="#" role="button">REPORTE</a>
+
+<div class="clock font-weight-bold" id="clock"></div>
+
+<div style="margin-top: 20px;"> 
+<div class="grafica-container custom-chart " style="float: left; width: 45%;">
+<canvas class="p-2" id="myChart"></canvas>
+</div>
+</div>
+
+
+
+
+<!--GRAFICA DE BARRAS-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['LECHE', 'PAN TAJADO','YOGURT', 'AREPAS', 'SALSAS', 'SHAMPOO'],
+datasets: [{
+  label: 'PRODUCTOS DEVUELTOS',
+  data: [20, 15, 3, 13, 2, 11],
+  backgroundColor: [ // Matriz de colores
+  'rgba(255, 99, 132, 0.2)', // Rojo
+  'rgba(54, 162, 235, 0.2)', // Azul
+  'rgba(255, 206, 86, 0.2)', // Amarillo
+  'rgba(75, 192, 192, 0.2)', // Verde
+  'rgba(153, 102, 255, 0.2)', // Morado
+  'rgba(255, 159, 64, 0.2)' // Naranja
+],
+borderColor: [ // Colores de borde
+'rgba(255, 99, 132, 1)', // Rojo
+'rgba(54, 162, 235, 1)', // Azul
+'rgba(255, 206, 86, 1)', // Amarillo
+'rgba(75, 192, 192, 1)', // Verde
+'rgba(153, 102, 255, 1)', // Morado
+'rgba(255, 159, 64, 1)' // Naranja
+],
+  borderWidth: 1
+}]
+},
+options: {
+scales: {
+  y: {
+    beginAtZero: true
+  }
+}
+}
+});
+
+
+const data = {
+labels: [
+'Red',
+'Blue',
+'Yellow'
+],
+datasets: [{
+label: 'My First Dataset',
+data: [300, 50, 100],
+backgroundColor: [
+  'rgb(255, 99, 132)',
+  'rgb(54, 162, 235)',
+  'rgb(255, 205, 86)'
+],
+hoverOffset: 4
+}]
+};
+
+</script>
+<div style="padding-right: 240px;">
+<div class="grafica-container custom-chart" style="float: right; width: 40%;">
+<canvas id="myChart1" width="400" height="400"></canvas>
+</div>
+</div>
+
+<!-- Script para la segunda gráfica -->
+<script>
+let miCanvas = document.getElementById("myChart1").getContext("2d");
+
+var chart = new Chart(miCanvas, {
+type: 'pie',
+data: {
+    labels: ['MAL ESTADO','MAL ASPECTO', 'SIN MOTIVO', 'VENCIDOS'],
+    datasets: [{
+        label: "GRAFICA MOTIVOS",
+        backgroundColor:  [ // Colores de borde
+        'rgba(255, 99, 132, 1)', // Rojo
+        'rgba(54, 162, 235, 1)', // Azul
+        'rgba(255, 206, 86, 1)', // Amarillo
+        'rgba(75, 192, 192, 1)', // Verde
+        'rgba(153, 102, 255, 1)', // Morado
+        'rgba(255, 159, 64, 1)'],
+        borderColor: [ // Colores de borde
+'rgba(255, 99, 132, 1)', // Rojo
+'rgba(54, 162, 235, 1)', // Azul
+'rgba(255, 206, 86, 1)', // Amarillo
+'rgba(75, 192, 192, 1)', // Verde
+'rgba(153, 102, 255, 1)', // Morado
+'rgba(255, 159, 64, 1)'], // Naranja,
+        borderWidth: 1,
+        data: [12, 30, 5, 24]
+    }],
+    
+},
+options: {
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+});
+</script>
+
+
+<div class="cuadros-container">
+<div>  <h2 style="margin-top: 20px;">Novedades</h2></div>
+<div class="cuadro2">
+<!-- Primer cuadro -->
+<h4>GRAFICO 1</h4>
+<p>Esta es la representación de productos que mas han devuelto por PROVEEDORES.</p>
+</div>
+<div class="cuadro2">
+<!-- Segundo cuadro -->
+<h4>GRAFICO 2</h4>
+<p>Esta es la representación de los motivos de devolucion de los productos.</p>
+</div>
+<div class="cuadro2 font-weight-bold">
+<!-- Tercer cuadro -->
+<h4>ADVERTENCIA</h4>
+<p>TENER CUIDADO CON LAS BOLSAS DE LECHE POR MOTIVO DE CADUCACÍON PROPIA.</p>
+</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<h3 style="margin-top: 1px;">Lista de Productos Menos Vendidos</h3>
+
+<div class="row cuadro-con-sombra font-weight-bold">
+<div class="col-md-3">
+<ul>
+<li>LEHCE</li>
+<li>PAN TAJADO</li>
+<li>AREPAS</li>
+<!-- Agrega más productos según sea necesario -->
+</ul>
+</div>
+<div class="col-md-3">
+<ul>
+<li>PAN CONCHA</li>
+<li>YOGURT</li>
+<li>SALSA ROSADA</li>
+<!-- Agrega más productos según sea necesario -->
+</ul>
+</div>
+<div class="col-md-4 ">
+<ul>
+<li>JAMÓN</li>
+<li>PONQUE</li>
+<li>QUESO</li>
+<!-- Agrega más productos según sea necesario -->
+</ul>
+</div>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+{% endblock %}
